@@ -49,13 +49,13 @@ links_in_posts <-
 # post as multiple references. This almost never comes up anyway.)
 most_referenced <-
   links_in_posts %>%
-  drop_na() %>%  # Removes within-post Table of Contents-style links
+  drop_na() %>%  # Remove within-post Table of Contents-style links.
   distinct() %>%
   count(link, sort = TRUE)
 most_referenced %>% print(n = 32)
 
 # Get most frequently referenced posts (references per year since being posted).
-# Using an arbitrary cutoff of minimum 5 references to keep the list from being
+# Using an arbitrary cutoff of minimum 6 references to keep the list from being
 # swamped by very recent posts that were immediately referenced once or twice.
 normalized_by_date <-
   most_referenced %>%
